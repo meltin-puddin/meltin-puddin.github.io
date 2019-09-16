@@ -55,15 +55,19 @@
   };
 </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="分类">
-<meta property="og:url" content="http://yoursite.com/categories/index.html">
+  <meta name="description" content="server.xml中设置 1&amp;lt;Connector URIEncoding=&quot;UTF-8&quot; maxPostSize=-1 connectionTimeout=&quot;20000&quot; port=&quot;8080&quot; protocol=&quot;HTTP/1.1&quot; redirectPort=&quot;8443&quot; maxHttpHeaderSize=&quot;65536&quot;/&amp;gt;  p.s. tomcat6及以下版本时设maxPost">
+<meta name="keywords" content="tomcat">
+<meta property="og:type" content="article">
+<meta property="og:title" content="tomcat服务器POST请求传参过长及乱码解决">
+<meta property="og:url" content="http://yoursite.com/2019/07/06/tomcatnote1/index.html">
 <meta property="og:site_name" content="meltin-puddin&#39;s blog">
+<meta property="og:description" content="server.xml中设置 1&amp;lt;Connector URIEncoding=&quot;UTF-8&quot; maxPostSize=-1 connectionTimeout=&quot;20000&quot; port=&quot;8080&quot; protocol=&quot;HTTP/1.1&quot; redirectPort=&quot;8443&quot; maxHttpHeaderSize=&quot;65536&quot;/&amp;gt;  p.s. tomcat6及以下版本时设maxPost">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-30T04:56:48.429Z">
+<meta property="og:updated_time" content="2019-09-16T10:44:29.002Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="分类">
-  <link rel="canonical" href="http://yoursite.com/categories/">
+<meta name="twitter:title" content="tomcat服务器POST请求传参过长及乱码解决">
+<meta name="twitter:description" content="server.xml中设置 1&amp;lt;Connector URIEncoding=&quot;UTF-8&quot; maxPostSize=-1 connectionTimeout=&quot;20000&quot; port=&quot;8080&quot; protocol=&quot;HTTP/1.1&quot; redirectPort=&quot;8443&quot; maxHttpHeaderSize=&quot;65536&quot;/&amp;gt;  p.s. tomcat6及以下版本时设maxPost">
+  <link rel="canonical" href="http://yoursite.com/2019/07/06/tomcatnote1/">
 
 
 <script id="page-configurations">
@@ -71,13 +75,13 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false,
-    isPage: true,
+    isPost: true,
+    isPage: false,
     isArchive: false
   };
 </script>
 
-  <title>分类 | meltin-puddin's blog</title>
+  <title>tomcat服务器POST请求传参过长及乱码解决 | meltin-puddin's blog</title>
   <meta name="generator" content="Hexo 3.9.0">
   
 
@@ -192,24 +196,6 @@
 
     
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
 </nav>
 </div>
     </header>
@@ -228,65 +214,129 @@
             
 
   <div id="posts" class="posts-expand">
-    
-    
-    
-    <div class="post-block page">
-      <header class="post-header">
-
-<h1 class="post-title" itemprop="name headline">分类
-
-</h1>
-
-<div class="post-meta">
+      <article itemscope itemtype="http://schema.org/Article">
   
+  
+  
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/06/tomcatnote1/">
 
-</div>
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="meltin-puddin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://s2.ax1x.com/2019/08/30/mXQXIf.jpg">
+    </span>
 
-</header>
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="meltin-puddin's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">tomcat服务器POST请求传参过长及乱码解决
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-07-06 18:37:02" itemprop="dateCreated datePublished" datetime="2019-07-06T18:37:02+08:00">2019-07-06</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-09-16 18:44:29" itemprop="dateModified" datetime="2019-09-16T18:44:29+08:00">2019-09-16</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/tomcat/" itemprop="url" rel="index"><span itemprop="name">tomcat</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-      
-      
-      <div class="post-body">
+        <p><code>server.xml</code>中设置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Connector URIEncoding=<span class="string">"UTF-8"</span> maxPostSize=-1 connectionTimeout=<span class="string">"20000"</span> port=<span class="string">"8080"</span> protocol=<span class="string">"HTTP/1.1"</span> redirectPort=<span class="string">"8443"</span> maxHttpHeaderSize=<span class="string">"65536"</span>/&gt;</span><br></pre></td></tr></table></figure>
+
+<p>p.s. tomcat6及以下版本时设<code>maxPostSize=0</code></p>
+
+    </div>
+
+    
+    
+    
         
-          <div class="category-all-page">
-            <div class="category-all-title">
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/tomcat/" rel="tag"># tomcat</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
               
+                <a href="/2019/07/04/Maven配置速记/" rel="next" title="Maven配置速记">
+                  <i class="fa fa-chevron-left"></i> Maven配置速记
+                </a>
               
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-              目前共计 4 个分类
             </div>
-            <div class="category-all">
-              <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/markdown/">markdown</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maven/">maven</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tomcat/">tomcat</a><span class="category-list-count">1</span></li></ul>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
             </div>
           </div>
         
-      </div>
-      
-      
-      
-    </div>
+      </footer>
     
+  </div>
+  
+  
+  
+  </article>
 
-    
-    
-    
   </div>
 
 
